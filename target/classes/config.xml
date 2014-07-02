@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="hello" class="mytest.Hello">
+		<constructor-arg value="Hi!!!" />
+		<property name="who" value="Alice" />
+		<!-- <constructor-arg index="0" type="String" name="s" value="Hi!!!"/> -->
+		<!-- <constructor-arg index="1" type="int" name="year" value="2012"/> -->
+		<!-- <constructor-arg index="2" type="String" name="who" value="Alice"/> -->
+	</bean>
+	<bean id="country" class="mytest.Country">
+		<property name="capital" ref="capital" />
+	</bean>
+	<bean id="capital" class="mytest.Capital" factory-method="getInstance">
+	</bean>
+</beans>

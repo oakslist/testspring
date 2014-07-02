@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+ 
+    <bean id="customerService" class="test3.CustomerService">
+        <property name="name" value="Iuri" />
+        <property name="url" value="http://www.javaxblog.ru" />
+    </bean>
+ 
+    <bean id="BeforeMethodBean" class="test3.BeforeMethod" />
+    
+    <bean id="AfterMethodBean" class="test3.AfterMethod" />
+    
+    <bean id="ThrowExceptionBean" class="test3.ThrowException" />
+    
+    <bean id="AroundMethodBean" class="test3.AroundMethod" />
+ 
+    <bean id="customerServiceProxy"
+                class="org.springframework.aop.framework.ProxyFactoryBean">
+ 
+        <property name="target" ref="customerService" />
+ 
+        <property name="interceptorNames">
+            <list>
+                <value>BeforeMethodBean</value>
+                <value>AfterMethodBean</value>
+                <value>ThrowExceptionBean</value>
+                <value>AroundMethodBean</value>
+            </list>
+        </property>
+    </bean>
+</beans>
